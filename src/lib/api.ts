@@ -1,5 +1,5 @@
 import { useAuth } from '@clerk/expo'
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 import { API_URL } from './theme'
 
 async function parse<T>(res: Response): Promise<T> {
@@ -22,9 +22,12 @@ export async function publicRequest<T>(path: string, options: RequestInit = {}):
 /** Authenticated request hook — attaches the Clerk session token as a Bearer header. */
 export function useApi() {
   const { getToken } = useAuth()
+  // Keep getToken in a ref so `request` is a stable function; otherwise effects re-run forever.
+  const getTokenRef = useRef(getToken)
+  getTokenRef.current = getToken
   const request = useCallback(
     async <T,>(path: string, options: RequestInit = {}): Promise<T> => {
-      const token = await getToken()
+      const token = await getTokenRef.current()
       const res = await fetch(`${API_URL}${path}`, {
         ...options,
         headers: {
@@ -35,7 +38,7 @@ export function useApi() {
       })
       return parse<T>(res)
     },
-    [getToken],
+    [],
   )
   return { request }
 }
