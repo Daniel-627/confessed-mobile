@@ -1,0 +1,18 @@
+{
+  "cli": { "version": ">= 16.0.0" },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": { "buildType": "apk" },
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_bWVycnktc2F0eXItNTUuY2xlcmsuYWNjb3VudHMuZGV2JA",
+        "EXPO_PUBLIC_API_URL": "https://api.confessed.faith",
+        "EXPO_PUBLIC_SANITY_PROJECT_ID": "clfxgc6n",
+        "EXPO_PUBLIC_SANITY_DATASET": "production"
+      }
+    },
+    "production": {
+      "android": { "buildType": "app-bundle" }
+    }
+  }
+}

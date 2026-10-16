@@ -8,8 +8,15 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#080f1a",
-    "splash": { "image": "./assets/splash-icon.png", "resizeMode": "contain", "backgroundColor": "#080f1a" },
-    "ios": { "supportsTablet": true, "bundleIdentifier": "faith.confessed.app" },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#080f1a"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "faith.confessed.app"
+    },
     "android": {
       "package": "faith.confessed.app",
       "adaptiveIcon": {
@@ -20,7 +27,21 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "web": { "favicon": "./assets/favicon.png", "bundler": "metro" },
-    "plugins": ["expo-router", "expo-secure-store", "expo-font", "expo-web-browser"]
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "063fec6c-0482-45e2-8948-1c90de646481"
+      }
+    }
   }
 }
