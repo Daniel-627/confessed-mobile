@@ -31,7 +31,7 @@ export default function RootLayout() {
     if (ready) SplashScreen.hideAsync()
   }, [ready])
 
-  if (!ready) return null
+ 
 
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
