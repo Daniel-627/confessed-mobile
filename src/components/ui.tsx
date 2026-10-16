@@ -5,10 +5,11 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as WebBrowser from 'expo-web-browser'
-import { colors, fonts } from '@/lib/theme'
+import { CONTRIBUTE_URL, colors, fonts } from '@/lib/theme'
 
 export function openUrl(url: string) {
-  if (url.startsWith('mailto:')) return Linking.openURL(url)
+  // mailto and the contributor portal open in the phone's own browser (keeps its sign-in).
+  if (url.startsWith('mailto:') || url.startsWith(CONTRIBUTE_URL)) return Linking.openURL(url)
   return WebBrowser.openBrowserAsync(url)
 }
 
