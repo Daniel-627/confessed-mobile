@@ -103,7 +103,7 @@ export default function Account() {
     try {
       const d = await request<{ user: UserData }>('/me', { method: 'PUT', body: JSON.stringify({ displayName: displayName.trim() }) })
       setUser(d.user)
-      flash('Saved ✓')
+      flash('Saved')
     } catch {
       flash('Could not save')
     } finally {
@@ -117,7 +117,7 @@ export default function Account() {
     try {
       const d = await request<{ preferences: Preferences }>('/me/preferences', { method: 'PUT', body: JSON.stringify(prefs) })
       setPrefs(d.preferences)
-      flash('Preferences saved ✓')
+      flash('Preferences saved')
     } catch {
       flash('Could not save')
     } finally {

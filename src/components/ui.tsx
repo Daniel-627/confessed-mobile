@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import {
-  ActivityIndicator, ColorValue, Linking, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput,
+  ActivityIndicator, ColorValue, Image, Linking, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput,
   TextInputProps, TextStyle, View, ViewStyle,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -28,25 +28,15 @@ export function Screen({
   )
 }
 
+const crossImg = require('../../assets/cross-gold.png')
+
+/** The Confessed cross (logo asset, not an emoji glyph). */
 export function Cross({ size = 24 }: { size?: number }) {
-  // Drawn with Views: the ✝ glyph renders as a purple emoji box on Samsung/Android.
-  const w = Math.max(2, Math.round(size / 8))
-  return (
-    <View style={{ alignSelf: 'center', width: size * 0.65, height: size, alignItems: 'center' }}>
-      <View style={{ position: 'absolute', top: 0, bottom: 0, width: w, backgroundColor: colors.gold, borderRadius: 1 }} />
-      <View style={{ position: 'absolute', top: size * 0.28, left: 0, right: 0, height: w, backgroundColor: colors.gold, borderRadius: 1 }} />
-    </View>
-  )
+  return <Image source={crossImg} style={{ width: size, height: size, alignSelf: 'center' }} resizeMode="contain" />
 }
 
-export function CrossIcon({ color, size = 20 }: { color: ColorValue; size?: number }) {
-  const w = Math.max(2, Math.round(size / 8))
-  return (
-    <View style={{ width: size * 0.65, height: size, alignItems: 'center' }}>
-      <View style={{ position: 'absolute', top: 0, bottom: 0, width: w, backgroundColor: color }} />
-      <View style={{ position: 'absolute', top: size * 0.28, left: 0, right: 0, height: w, backgroundColor: color }} />
-    </View>
-  )
+export function CrossIcon({ color, size = 24 }: { color: ColorValue; size?: number }) {
+  return <Image source={crossImg} style={{ width: size, height: size, tintColor: color as string }} resizeMode="contain" />
 }
 
 export function Eyebrow({ text, center }: { text: string; center?: boolean }) {

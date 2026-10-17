@@ -74,7 +74,7 @@ function Latest() {
       <Label>Latest</Label>
       <Title text="From the {{articles}}" size={30} style={{ marginBottom: 16 }} />
       {articles.map(a => <ArticleCard key={a.id} a={a} />)}
-      <Btn label="All articles →" variant="ghost" onPress={() => router.navigate('/articles')} />
+      <Btn label="All articles" variant="ghost" onPress={() => router.navigate('/articles')} />
     </View>
   )
 }

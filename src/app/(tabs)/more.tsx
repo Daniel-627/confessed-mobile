@@ -1,3 +1,4 @@
+import { ChevronRight } from 'lucide-react-native'
 import { Href, router } from 'expo-router'
 import { Pressable, Text, View } from 'react-native'
 import { Cross, Label, Screen, Title, openUrl, pad } from '@/components/ui'
@@ -61,7 +62,7 @@ export default function More() {
                     {i.badge.toUpperCase()}
                   </Text>
                 ) : (
-                  <Text style={{ color: colors.faint, fontSize: 16 }}>›</Text>
+                  <ChevronRight color={colors.faint} size={20} />
                 )}
               </Pressable>
             ))}

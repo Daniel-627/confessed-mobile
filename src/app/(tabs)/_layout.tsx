@@ -1,12 +1,12 @@
 import { Tabs } from 'expo-router'
-import { ColorValue, Text } from 'react-native'
+import { BookOpen, Download, Menu, User, type LucideIcon } from 'lucide-react-native'
+import { ColorValue } from 'react-native'
 import { CrossIcon } from '@/components/ui'
 import { colors, fonts } from '@/lib/theme'
 
-// Simple glyph icons keep the app free of an icon-font dependency.
-const glyph = (g: string) =>
-  function Icon({ color }: { color: ColorValue }) {
-    return <Text style={{ color, fontSize: 18 }}>{g}</Text>
+const icon = (Icon: LucideIcon) =>
+  function TabIcon({ color }: { color: ColorValue }) {
+    return <Icon color={color as string} size={22} strokeWidth={1.75} />
   }
 
 export default function TabsLayout() {
@@ -22,10 +22,10 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen name="index" options={{ title: 'Home', tabBarIcon: ({ color }) => <CrossIcon color={color} /> }} />
-      <Tabs.Screen name="articles" options={{ title: 'Articles', tabBarIcon: glyph('≡') }} />
-      <Tabs.Screen name="resources" options={{ title: 'Resources', tabBarIcon: glyph('↓') }} />
-      <Tabs.Screen name="account" options={{ title: 'Account', tabBarIcon: glyph('○') }} />
-      <Tabs.Screen name="more" options={{ title: 'More', tabBarIcon: glyph('⋯') }} />
+      <Tabs.Screen name="articles" options={{ title: 'Articles', tabBarIcon: icon(BookOpen) }} />
+      <Tabs.Screen name="resources" options={{ title: 'Resources', tabBarIcon: icon(Download) }} />
+      <Tabs.Screen name="account" options={{ title: 'Account', tabBarIcon: icon(User) }} />
+      <Tabs.Screen name="more" options={{ title: 'More', tabBarIcon: icon(Menu) }} />
     </Tabs>
   )
 }
