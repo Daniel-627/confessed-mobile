@@ -31,8 +31,8 @@ export default function RootLayout() {
     if (ready) SplashScreen.hideAsync()
   }, [ready])
 
- 
-
+  // Always render the navigator: expo-router must mount a navigator on the first render.
+  // The splash screen stays visible (preventAutoHideAsync) until fonts are ready.
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <SafeAreaProvider>

@@ -3,7 +3,7 @@ import { router } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
 import ArticleCard from '@/components/ArticleCard'
-import { Body, Btn, Card, Eyebrow, Field, Label, Quote, Screen, Title, ErrorText, openUrl, pad } from '@/components/ui'
+import { Body, Btn, Card, Cross, Eyebrow, Field, Label, Quote, Screen, Title, ErrorText, openUrl, pad } from '@/components/ui'
 import { Article, publicRequest } from '@/lib/api'
 import { HOME_SERIES } from '@/lib/content'
 import { CONTRIBUTE_URL, colors, fonts } from '@/lib/theme'
@@ -39,8 +39,8 @@ function Hero({ signedIn }: { signedIn: boolean }) {
     <View style={[pad, { paddingTop: 32, paddingBottom: 24 }]}>
       <Eyebrow text="Reformed · Confessional · Gospel-Centred" />
       <Title text={'Not Ashamed\nof the {{Gospel}}'} size={46} />
-      <Text style={{ fontFamily: fonts.sansSemi, letterSpacing: 2, fontSize: 12, color: colors.gold, marginTop: 14, textTransform: 'uppercase' }}>
-        Theology. Apologetics. Discipleship.
+      <Text style={{ fontFamily: fonts.sansSemi, letterSpacing: 2, fontSize: 12, color: colors.gold, marginTop: 14 }}>
+        THEOLOGY. APOLOGETICS. DISCIPLESHIP.
       </Text>
       <Quote
         text={'"For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes."'}
@@ -52,7 +52,7 @@ function Hero({ signedIn }: { signedIn: boolean }) {
       </View>
       {PILLARS.map(p => (
         <Card key={p.title}>
-          <Text style={{ color: colors.gold, fontSize: 14, marginBottom: 6 }}>✝</Text>
+          <Cross size={14} />
           <Text style={{ fontFamily: fonts.serif, fontSize: 22, color: colors.cream, marginBottom: 6 }}>{p.title}</Text>
           <Body>{p.desc}</Body>
         </Card>

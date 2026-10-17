@@ -48,8 +48,8 @@ export default function ArticleDetail() {
       <ScrollView contentContainerStyle={[pad, { paddingTop: 12, paddingBottom: 64 }]}>
         {article.series && (
           <Pressable onPress={() => router.navigate({ pathname: '/articles', params: { series: article.series!.slug } })}>
-            <Text style={{ fontFamily: fonts.sansBold, fontSize: 11, letterSpacing: 2, color: colors.gold, textTransform: 'uppercase', marginBottom: 12 }}>
-              {article.series.name}
+            <Text style={{ fontFamily: fonts.sansBold, fontSize: 11, letterSpacing: 2, color: colors.gold, marginBottom: 12 }}>
+              {article.series.name.toUpperCase()}
             </Text>
           </Pressable>
         )}

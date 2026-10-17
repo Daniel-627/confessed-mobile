@@ -144,8 +144,8 @@ export default function Account() {
           </View>
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-          <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 1.5, color: role.color, borderWidth: 1, borderColor: role.color, borderRadius: 100, paddingHorizontal: 10, paddingVertical: 3, textTransform: 'uppercase' }}>
-            {role.label}
+          <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 1.5, color: role.color, borderWidth: 1, borderColor: role.color, borderRadius: 100, paddingHorizontal: 10, paddingVertical: 3 }}>
+            {role.label.toUpperCase()}
           </Text>
           <Text style={{ fontFamily: fonts.sans, fontSize: 12, color: colors.faint }}>
             Member since {formatDate(user.createdAt)}

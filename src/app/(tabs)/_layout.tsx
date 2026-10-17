@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router'
 import { ColorValue, Text } from 'react-native'
+import { CrossIcon } from '@/components/ui'
 import { colors, fonts } from '@/lib/theme'
 
 // Simple glyph icons keep the app free of an icon-font dependency.
@@ -13,16 +14,17 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        sceneStyle: { backgroundColor: colors.bg },
         tabBarActiveTintColor: colors.gold,
         tabBarInactiveTintColor: colors.faint,
         tabBarStyle: { backgroundColor: colors.bg, borderTopColor: colors.borderSoft },
         tabBarLabelStyle: { fontFamily: fonts.sansSemi, fontSize: 10, letterSpacing: 0.8 },
       }}
     >
-      <Tabs.Screen name="index" options={{ title: 'Home', tabBarIcon: glyph('✝') }} />
-      <Tabs.Screen name="articles" options={{ title: 'Articles', tabBarIcon: glyph('☰') }} />
-      <Tabs.Screen name="resources" options={{ title: 'Resources', tabBarIcon: glyph('⇩') }} />
-      <Tabs.Screen name="account" options={{ title: 'Account', tabBarIcon: glyph('☺') }} />
+      <Tabs.Screen name="index" options={{ title: 'Home', tabBarIcon: ({ color }) => <CrossIcon color={color} /> }} />
+      <Tabs.Screen name="articles" options={{ title: 'Articles', tabBarIcon: glyph('≡') }} />
+      <Tabs.Screen name="resources" options={{ title: 'Resources', tabBarIcon: glyph('↓') }} />
+      <Tabs.Screen name="account" options={{ title: 'Account', tabBarIcon: glyph('○') }} />
       <Tabs.Screen name="more" options={{ title: 'More', tabBarIcon: glyph('⋯') }} />
     </Tabs>
   )

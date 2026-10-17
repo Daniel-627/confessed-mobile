@@ -2,7 +2,7 @@ import { useSignUp } from '@clerk/expo'
 import { Link, router } from 'expo-router'
 import { useState } from 'react'
 import { KeyboardAvoidingView, Platform, ScrollView, Text } from 'react-native'
-import { Body, Btn, ErrorText, Field, Title, pad } from '@/components/ui'
+import { Body, Btn, Cross, ErrorText, Field, Title, pad } from '@/components/ui'
 import { colors, fonts } from '@/lib/theme'
 
 export default function SignUpScreen() {
@@ -56,7 +56,7 @@ export default function SignUpScreen() {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={[pad, { paddingTop: 32, paddingBottom: 48 }]} keyboardShouldPersistTaps="handled">
-        <Text style={{ color: colors.gold, fontSize: 28, textAlign: 'center' }}>✝</Text>
+        <Cross size={28} />
         {step === 'form' ? (
           <>
             <Title text="Join {{Confessed}}" size={36} center />

@@ -39,8 +39,8 @@ export default function ResourcesScreen() {
         renderItem={({ item: r }) => (
           <View style={pad}>
             <Card>
-              <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2, color: colors.gold, textTransform: 'uppercase', marginBottom: 8 }}>
-                {TYPE_LABELS[r.type] ?? r.type}
+              <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2, color: colors.gold, marginBottom: 8 }}>
+                {(TYPE_LABELS[r.type] ?? r.type).toUpperCase()}
               </Text>
               <Text style={{ fontFamily: fonts.serif, fontSize: 22, color: colors.cream, marginBottom: 6 }}>{r.title}</Text>
               {r.description ? <Body style={{ marginBottom: 12 }}>{r.description}</Body> : null}

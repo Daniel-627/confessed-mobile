@@ -26,7 +26,7 @@ export default function ArticleCard({ a }: { a: Article }) {
 const s = StyleSheet.create({
   series: {
     fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2, color: colors.gold,
-    textTransform: 'uppercase', marginBottom: 8,
+    marginBottom: 8,
   },
   title: { fontFamily: fonts.serif, fontSize: 23, lineHeight: 29, color: colors.cream, marginBottom: 8 },
   excerpt: { fontFamily: fonts.sans, fontSize: 14, lineHeight: 22, color: colors.muted, marginBottom: 14 },

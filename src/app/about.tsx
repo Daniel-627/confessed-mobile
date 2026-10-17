@@ -30,8 +30,8 @@ export default function About() {
                 {STATS.map(s => (
                   <Card key={s.label} style={{ width: '47%', marginBottom: 0, alignItems: 'center' }}>
                     <Text style={{ fontFamily: fonts.serif, fontSize: 34, color: colors.gold }}>{s.num}</Text>
-                    <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 1.8, color: colors.muted, textTransform: 'uppercase' }}>
-                      {s.label}
+                    <Text style={{ fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 1.8, color: colors.muted }}>
+                      {s.label.toUpperCase()}
                     </Text>
                   </Card>
                 ))}

@@ -5,7 +5,7 @@ import * as WebBrowser from 'expo-web-browser'
 import { Link, router } from 'expo-router'
 import { useState } from 'react'
 import { KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native'
-import { Body, Btn, ErrorText, Field, Title, pad } from '@/components/ui'
+import { Body, Btn, Cross, ErrorText, Field, Title, pad } from '@/components/ui'
 import { colors, fonts } from '@/lib/theme'
 
 WebBrowser.maybeCompleteAuthSession()
@@ -62,7 +62,7 @@ export default function SignInScreen() {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={[pad, { paddingTop: 32, paddingBottom: 48 }]} keyboardShouldPersistTaps="handled">
-        <Text style={{ color: colors.gold, fontSize: 28, textAlign: 'center' }}>✝</Text>
+        <Cross size={28} />
         <Title text="Welcome {{back}}" size={36} center />
         <Body center style={{ marginTop: 6, marginBottom: 28 }}>Sign in to your Confessed account</Body>
         <Field label="Email" value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" autoComplete="email" autoCorrect={false} />

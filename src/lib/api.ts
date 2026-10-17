@@ -22,7 +22,8 @@ export async function publicRequest<T>(path: string, options: RequestInit = {}):
 /** Authenticated request hook — attaches the Clerk session token as a Bearer header. */
 export function useApi() {
   const { getToken } = useAuth()
-  // Keep getToken in a ref so `request` is a stable function; otherwise effects re-run forever.
+  // Clerk's getToken can change identity between renders. Keep it in a ref so `request`
+  // is a stable function — otherwise any effect depending on it re-runs forever.
   const getTokenRef = useRef(getToken)
   getTokenRef.current = getToken
   const request = useCallback(

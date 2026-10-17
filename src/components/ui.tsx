@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import {
-  ActivityIndicator, Linking, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput,
+  ActivityIndicator, ColorValue, Linking, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput,
   TextInputProps, TextStyle, View, ViewStyle,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -19,27 +19,48 @@ export function Screen({
 }: { children: ReactNode; scroll?: boolean; edges?: ('top' | 'bottom')[] }) {
   return (
     <SafeAreaView style={s.screen} edges={edges}>
-      {scroll ? <ScrollView contentContainerStyle={s.scrollContent}>{children}</ScrollView> : children}
+      {scroll ? (
+        <ScrollView contentContainerStyle={s.scrollContent}>
+          <View style={s.maxW}>{children}</View>
+        </ScrollView>
+      ) : children}
     </SafeAreaView>
   )
 }
 
 export function Cross({ size = 24 }: { size?: number }) {
-  return <Text style={{ color: colors.gold, fontSize: size, textAlign: 'center' }}>✝</Text>
+  // Drawn with Views: the ✝ glyph renders as a purple emoji box on Samsung/Android.
+  const w = Math.max(2, Math.round(size / 8))
+  return (
+    <View style={{ alignSelf: 'center', width: size * 0.65, height: size, alignItems: 'center' }}>
+      <View style={{ position: 'absolute', top: 0, bottom: 0, width: w, backgroundColor: colors.gold, borderRadius: 1 }} />
+      <View style={{ position: 'absolute', top: size * 0.28, left: 0, right: 0, height: w, backgroundColor: colors.gold, borderRadius: 1 }} />
+    </View>
+  )
+}
+
+export function CrossIcon({ color, size = 20 }: { color: ColorValue; size?: number }) {
+  const w = Math.max(2, Math.round(size / 8))
+  return (
+    <View style={{ width: size * 0.65, height: size, alignItems: 'center' }}>
+      <View style={{ position: 'absolute', top: 0, bottom: 0, width: w, backgroundColor: color }} />
+      <View style={{ position: 'absolute', top: size * 0.28, left: 0, right: 0, height: w, backgroundColor: color }} />
+    </View>
+  )
 }
 
 export function Eyebrow({ text, center }: { text: string; center?: boolean }) {
   return (
     <View style={[s.eyebrowRow, center && { justifyContent: 'center' }]}>
-      <View style={s.eyebrowLine} />
-      <Text style={s.eyebrow}>{text}</Text>
-      <View style={s.eyebrowLine} />
+      {center && <View style={s.eyebrowLine} />}
+      <Text style={s.eyebrow}>{text.toUpperCase()}</Text>
+      {center && <View style={s.eyebrowLine} />}
     </View>
   )
 }
 
 export function Label({ children }: { children: ReactNode }) {
-  return <Text style={s.label}>{children}</Text>
+  return <Text style={s.label}>{typeof children === 'string' ? children.toUpperCase() : children}</Text>
 }
 
 /** Serif heading. Text wrapped in {{double braces}} renders gold italic (the web's <em>). */
@@ -115,7 +136,7 @@ export function Btn({
       {loading ? (
         <ActivityIndicator color={gold ? colors.bg : colors.gold} />
       ) : (
-        <Text style={[s.btnText, { color: gold ? colors.bg : colors.cream }]}>{label}</Text>
+        <Text style={[s.btnText, { color: gold ? colors.bg : colors.cream }]}>{label.toUpperCase()}</Text>
       )}
     </Pressable>
   )
@@ -124,7 +145,7 @@ export function Btn({
 export function Field({ label, hint, ...props }: TextInputProps & { label: string; hint?: string }) {
   return (
     <View style={{ marginBottom: 18 }}>
-      <Text style={s.fieldLabel}>{label}</Text>
+      <Text style={s.fieldLabel}>{label.toUpperCase()}</Text>
       <TextInput
         placeholderTextColor="rgba(240,236,224,0.2)"
         {...props}
@@ -174,15 +195,16 @@ export const pad = { paddingHorizontal: 24 }
 
 const s = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
-  scrollContent: { paddingBottom: 48 },
+  scrollContent: { paddingBottom: 48, alignItems: 'center' },
+  maxW: { width: '100%', maxWidth: 720 },
   eyebrowRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
   eyebrowLine: { height: 1, width: 24, backgroundColor: colors.goldBorder },
   eyebrow: {
-    fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2.2, color: colors.gold, textTransform: 'uppercase',
+    fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2.2, color: colors.gold,
   },
   label: {
     fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 2.2, color: colors.goldDim,
-    textTransform: 'uppercase', marginBottom: 8,
+    marginBottom: 8,
   },
   body: { fontFamily: fonts.sans, fontSize: 15, lineHeight: 25, color: colors.muted },
   quote: { borderLeftWidth: 2, borderLeftColor: colors.gold, paddingLeft: 16, marginVertical: 20 },
@@ -195,10 +217,10 @@ const s = StyleSheet.create({
   btn: { paddingVertical: 14, paddingHorizontal: 24, borderRadius: 8, alignItems: 'center', justifyContent: 'center' },
   btnGold: { backgroundColor: colors.gold },
   btnGhost: { borderWidth: 1, borderColor: colors.border },
-  btnText: { fontFamily: fonts.sansBold, fontSize: 13, letterSpacing: 1.2, textTransform: 'uppercase' },
+  btnText: { fontFamily: fonts.sansBold, fontSize: 13, letterSpacing: 1.2 },
   fieldLabel: {
     fontFamily: fonts.sansBold, fontSize: 10, letterSpacing: 1.8, color: colors.goldDim,
-    textTransform: 'uppercase', marginBottom: 8,
+    marginBottom: 8,
   },
   input: {
     backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: 8,

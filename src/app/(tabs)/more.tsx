@@ -57,8 +57,8 @@ export default function More() {
               >
                 <Text style={{ fontFamily: fonts.serif, fontSize: 24, color: colors.cream, flex: 1 }}>{i.label}</Text>
                 {i.badge ? (
-                  <Text style={{ fontFamily: fonts.sansBold, fontSize: 9, letterSpacing: 1.2, color: colors.gold, borderWidth: 1, borderColor: colors.goldBorder, borderRadius: 100, paddingHorizontal: 8, paddingVertical: 2, textTransform: 'uppercase' }}>
-                    {i.badge}
+                  <Text style={{ fontFamily: fonts.sansBold, fontSize: 9, letterSpacing: 1.2, color: colors.gold, borderWidth: 1, borderColor: colors.goldBorder, borderRadius: 100, paddingHorizontal: 8, paddingVertical: 2 }}>
+                    {i.badge.toUpperCase()}
                   </Text>
                 ) : (
                   <Text style={{ color: colors.faint, fontSize: 16 }}>›</Text>
