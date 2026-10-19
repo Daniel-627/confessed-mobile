@@ -5,14 +5,15 @@ import { StatusBar } from 'expo-status-bar'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import {
-  EBGaramond_400Regular, EBGaramond_400Regular_Italic, EBGaramond_500Medium,
-  useFonts as useGaramond,
-} from '@expo-google-fonts/eb-garamond'
-import {
-  Barlow_400Regular, Barlow_500Medium, Barlow_600SemiBold, Barlow_700Bold,
-  useFonts as useBarlow,
-} from '@expo-google-fonts/barlow'
+import { useFonts as useGaramond } from '@expo-google-fonts/eb-garamond/useFonts'
+import { EBGaramond_400Regular } from '@expo-google-fonts/eb-garamond/400Regular'
+import { EBGaramond_400Regular_Italic } from '@expo-google-fonts/eb-garamond/400Regular_Italic'
+import { EBGaramond_500Medium } from '@expo-google-fonts/eb-garamond/500Medium'
+import { useFonts as useBarlow } from '@expo-google-fonts/barlow/useFonts'
+import { Barlow_400Regular } from '@expo-google-fonts/barlow/400Regular'
+import { Barlow_500Medium } from '@expo-google-fonts/barlow/500Medium'
+import { Barlow_600SemiBold } from '@expo-google-fonts/barlow/600SemiBold'
+import { Barlow_700Bold } from '@expo-google-fonts/barlow/700Bold'
 import { colors, fonts } from '@/lib/theme'
 
 SplashScreen.preventAutoHideAsync()

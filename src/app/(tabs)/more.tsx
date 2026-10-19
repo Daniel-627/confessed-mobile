@@ -21,6 +21,7 @@ const SECTIONS: { title: string; items: Item[] }[] = [
       { label: 'About', href: '/about' },
       { label: 'Statement of Faith', href: '/faith' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Give', url: `${SITE_URL}/give` },
     ],
   },
   {
